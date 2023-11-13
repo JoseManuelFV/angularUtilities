@@ -66,7 +66,7 @@ export class iUnsubscribeDestroy implements OnDestroy {
      * @param methodError Method fired when error
      */
     _listenIndividualAPISubject(subjSuccessName:string, subjErrorName:string, methodSucess?:(data: any) => any, methodError?:(data: any) => any){
-        let {idUnsub, unsub} = this._generateUnsubInd();
+        let {idUnsub, unsub} = this._newUnsubInd();
         SubjectManagerService.getSubject(subjSuccessName).pipe(takeUntil(unsub)).subscribe(value=>{
             if(methodSucess!=null){
                 methodSucess(value);
@@ -93,7 +93,7 @@ export class iUnsubscribeDestroy implements OnDestroy {
      * 
      */
     _listenerIndividualSubject(subject:Subject<any>|BehaviorSubject<any>,methodSuccess?:(data: any) => any){
-        let {idUnsub, unsub} = this._generateUnsubInd();
+        let {idUnsub, unsub} = this._newUnsubInd();
         subject.pipe(takeUntil(unsub)).subscribe(value=>{
             if(methodSuccess!=null){
                 methodSuccess(value);
