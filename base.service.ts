@@ -10,7 +10,7 @@ import { iMethods, iNextObservable, iResultData } from './iHelpersAPI';
   providedIn: 'root'
 })
 export class BaseService {
-  constructor(private _http:HttpClient){}
+  private _http = inject(HttpClient);
 
   private _methodsRefreshToken: Array<{ method: Function, args: Array<any> }> = [];
   private _alreadyListener:any;
